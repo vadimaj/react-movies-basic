@@ -3,7 +3,7 @@ import { BASIC_URL, KEY } from '../constants/constants';
 async function getTrendingToday() {
   const res = await fetch(`${BASIC_URL}/trending/movie/day?api_key=${KEY}`);
   const data = await res.json();
-  //   console.log(data);
+  // console.log(data);
   return data.results;
 }
 
@@ -13,7 +13,7 @@ async function getMovies(query) {
   );
   const data = await res.json();
   // console.log(data);
-  return data.results;
+  return data;
 }
 
 async function getMovieDetails(id) {

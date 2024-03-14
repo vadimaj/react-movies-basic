@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Home, { loader as trendingMoviesLoader } from './components/Home';
+import Home, { loader as trendingMoviesLoader } from './pages/Home';
 import Movies from './pages/Movies';
 import MovieDetails, {
   loader as movoieDetailsLoader,

@@ -1,22 +1,22 @@
 /* eslint-disable react/prop-types */
+import { useState } from 'react';
 import { FaSistrix } from 'react-icons/fa6';
-import { useSearchParams } from 'react-router-dom';
 
-const SearchBar = ({ onSearch }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query');
+const SearchBar = ({ onSubmit }) => {
+  // const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState('');
 
   const handleInputChange = (e) => {
-    if (e.target.value === '') {
-      setSearchParams({});
-    }
-    setSearchParams({ query: e.target.value });
+    setQuery(e.currentTarget.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!query) return;
-    onSearch(query);
+    if (query.trim() === '') {
+      return alert('Please enter search query');
+    }
+    onSubmit(query);
+    setQuery('');
   };
 
   return (
@@ -32,7 +32,7 @@ const SearchBar = ({ onSearch }) => {
       </button>
 
       <input
-        value={query || ''}
+        value={query}
         onChange={handleInputChange}
         className="flex w-full text-base border-none outline-none px-1 "
         type="text"

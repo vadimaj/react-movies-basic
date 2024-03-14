@@ -8,14 +8,19 @@ import movieplaceholder from '../images/movieplaceholder.jpg';
 
 const MovieDetails = () => {
   const location = useLocation();
-  const linkBackRef = useRef(location.state?.from ?? '/movies');
+  const linkBackRef = useRef(location.state?.from ?? '/');
   const movie = useLoaderData();
   const { title, genres, release_date, vote_average, poster_path, overview } =
     movie;
   return (
     <>
       <section className="">
-        <Link to={linkBackRef.current}>Back</Link>
+        <Link
+          to={linkBackRef.current}
+          className="h-20 px-8 transition-all duration-300 rounded-xl text-white flex items-center gap-2 bg-primary hover:bg-primary-hover"
+        >
+          Back
+        </Link>
         <div className="">
           <img
             src={poster_path ? IMAGES_BASE_URL + poster_path : movieplaceholder}
